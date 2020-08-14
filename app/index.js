@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(
-	<div>This is my boilerplate to start a new project!</div>,
-	document.getElementById("app")
-);
+import "./index.scss";
+
+import Layout from "./components/layout/layout.js";
+
+ReactDOM.render(<Layout />, document.getElementById("app"));
 
 if (module.hot) {
 	module.hot.accept();
