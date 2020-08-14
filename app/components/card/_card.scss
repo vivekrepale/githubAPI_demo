@@ -1,0 +1,24 @@
+.card-wrapper {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	background-color: yellow;
+	//overflow: hidden;
+
+	&__head {
+		display: grid;
+		grid-template-columns: repeat(2, min-content);
+		//grid-auto-flow: column;
+		justify-self: start;
+		grid-gap: 0.5rem;
+
+		padding: 0.2rem 1rem;
+		text-wrap: break-word;
+	}
+
+	&__avatar {
+		height: 4rem;
+		width: 4rem;
+		border-radius: 50%;
+	}
+}

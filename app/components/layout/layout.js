@@ -1,115 +1,104 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
+
+import Card from "../card/card.js";
+import Footer from "../footer/footer.js";
+import Header from "../header/header.js";
+import Following from "../following/following.js";
 
 const Layout = () => {
 	//state to store the data
 	const [data, setData] = useState([]);
 	const [pagination_links, set_pagination_links] = useState("");
+	const [following, setFollowing] = useState([]);
 
 	const sendRequest = async (
-		url = "https://api.github.com/repos/facebook/react/forks??client_id=2282079b01f393e69c91&client_secret=63884ea5631399d0cae111fb8dbc4b0edafe7ab7"
+		url = "https://api.github.com/repos/facebook/react/forks"
 	) => {
 		try {
 			const res = await Axios.get(url);
 			setData(res.data);
-			//console.log(res.headers.link);
+			//console.log(res.data);
 			set_pagination_links(res.headers.link);
 		} catch (e) {
 			console.log(e);
 		}
 	};
-	//console.log("A:", links);
+
+	useEffect(() => {
+		sendRequest();
+	}, []);
 
 	const urlArray = pagination_links.split(",");
-	//console.log(urlArray);
 
 	const getUsersIFollow = async () => {
-		const url = `https://api.github.com/user/following?client_id=2282079b01f393e69c91&client_secret=63884ea5631399d0cae111fb8dbc4b0edafe7ab7`;
+		const url = `https://api.github.com/user/following`;
 		const headers = {
 			headers: {
-				Authorization: "Token 411175e2714dccffd1ce3f9919662ef75afdea7e",
+				Authorization: "Token 5ede6a5bde154d02ae6514db2e8eb2c399aed675",
 			},
 		};
 		try {
 			const res = await Axios.get(url, headers);
-			console.log(res);
+			//console.log(res.data);
+			setFollowing(res.data);
 		} catch (e) {
 			console.log(e);
 		}
-	};
-
-	const followAUser = async (username) => {
-		const url = `https://api.github.com/user/following/${username}?client_id=2282079b01f393e69c91&client_secret=63884ea5631399d0cae111fb8dbc4b0edafe7ab7`;
-		const headers = {
-			headers: {
-				Authorization: "Token 411175e2714dccffd1ce3f9919662ef75afdea7e",
-			},
-		};
-		try {
-			const res = await Axios.put(url, null, headers);
-			console.log(res);
-		} catch (e) {
-			console.log(e);
-		}
+		return following.length;
 	};
 
 	return (
 		<div className="layout-wrapper">
+			<Header />
 			<button
 				onClick={() => getUsersIFollow()}
 				className="layout-wrapper__btn"
 			>
 				Get all users I follow
 			</button>
-
-			<button
-				onClick={() => sendRequest()}
-				className="layout-wrapper__btn"
-			>
-				Get all users who forked Reacts repository!
-			</button>
-			<div className="layout-wrapper__data">
-				{data.map((d, key) => {
-					//console.log(d.full_name);
-					//const name = d.full_name.split("/")[0];
-					const username = d.owner.login;
+			<div className="layout-wrapper__data layout-wrapper__data--following">
+				{following.map((d, key) => {
 					return (
-						<div key={key}>
-							<img
-								className="image"
-								src={d.owner.avatar_url}
-								alt="avatar"
-							/>
-							<h3>Username: {username}</h3>
-							<h4>Fork id: {d.id}</h4>
-							<button
-								onClick={() => {
-									followAUser(username);
-								}}
-							>
-								Follow
-							</button>
-						</div>
+						<Following
+							username={d.login}
+							id={d.id}
+							avatar={d.avatar_url}
+							unique={key}
+						/>
 					);
 				})}
-
-				{pagination_links
-					? urlArray.map((u, key) => {
-							const url = u.split(";")[0].trim().slice(1, -1);
-							const buttonText = u.split(";")[1];
-							// console.log("URL", url);
-							// console.log("Button", buttonText);
-							return (
-								<button
-									key={key}
-									onClick={() => sendRequest(url)}
-								>
-									{buttonText}
-								</button>
-							);
-					  })
-					: ""}
 			</div>
+
+			<div className="layout-wrapper__data">
+				<h3>Users who forked Reacts repo from github:</h3>
+				{data.map((d, key) => {
+					return (
+						<Card
+							username={d.owner.login}
+							id={d.id}
+							avatar={d.owner.avatar_url}
+							unique={key}
+							getUsersIFollow={getUsersIFollow}
+						/>
+					);
+				})}
+			</div>
+
+			{pagination_links
+				? urlArray.map((u, key) => {
+						const url = u.split(";")[0].trim().slice(1, -1);
+						const buttonText = u.split(";")[1];
+						return (
+							<Footer
+								url={url}
+								buttonText={buttonText}
+								unique={key}
+								sendRequest={sendRequest}
+							/>
+						);
+				  })
+				: ""}
 		</div>
 	);
 };
@@ -117,3 +106,4 @@ const Layout = () => {
 export default Layout;
 
 // 411175e2714dccffd1ce3f9919662ef75afdea7e
+//5ede6a5bde154d02ae6514db2e8eb2c399aed675
