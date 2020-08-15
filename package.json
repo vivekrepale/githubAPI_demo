@@ -1,5 +1,5 @@
 {
-  "name": "securbot",
+  "name": "githubAPI_demo",
   "version": "1.0.0",
   "description": "GithubAPI Demo App",
   "main": "app.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vivekrepale/securbot.git"
+    "url": "git+https://github.com/vivekrepale/githubAPI_demo.git"
   },
   "author": "Vivek Repale",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vivekrepale/securbot/issues"
+    "url": "https://github.com/vivekrepale/githubAPI_demo/issues"
   },
-  "homepage": "https://github.com/vivekrepale/securbot#readme",
+  "homepage": "https://github.com/vivekrepale/githubAPI_demo#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "react": "^16.13.1",
@@ -39,10 +39,8 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
-    "react-inlinesvg": "^2.0.0",
     "sass-loader": "^9.0.1",
     "style-loader": "^1.2.1",
-    "svg-inline-loader": "^0.8.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

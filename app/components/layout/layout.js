@@ -4,7 +4,6 @@ import Axios from "axios";
 import Card from "../card/card.js";
 import Footer from "../footer/footer.js";
 import Header from "../header/header.js";
-import Following from "../following/following.js";
 
 const Layout = () => {
 	//state to store the data
