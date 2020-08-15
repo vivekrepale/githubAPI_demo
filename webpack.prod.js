@@ -1,4 +1,5 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -15,6 +16,7 @@ module.exports = {
       template: "./app/index.html",
       // favicon: "./app/assets/images/logoFavicon.ico",
     }),
+    new Dotenv(),
   ],
   output: {
     filename: "[name].[chunkhash].js",
