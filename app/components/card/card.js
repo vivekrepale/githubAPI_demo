@@ -7,6 +7,8 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 	const [follow, setFollow] = useState(false);
 	const [displayCard, setDisplayCard] = useState(false);
 
+	const { TOKEN } = process.env;
+
 	const animation = useSpring({
 		opacity: displayCard ? 1 : 0,
 		transform: displayCard ? "scale(1)" : "scale(0.5)",
@@ -17,7 +19,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: `token ${process.env.TOKEN}`,
+				Authorization: `token ${TOKEN}`,
 			},
 		};
 		try {
@@ -35,7 +37,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: `token ${process.env.TOKEN}`,
+				Authorization: `token ${TOKEN}`,
 			},
 		};
 		try {

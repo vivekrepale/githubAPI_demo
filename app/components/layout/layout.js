@@ -8,16 +8,19 @@ import Following from "../following/following.js";
 
 const Layout = () => {
 	//state to store the data
+
 	const [data, setData] = useState([]);
 	const [pagination_links, set_pagination_links] = useState("");
 	const [following, setFollowing] = useState([]);
+
+	const { TOKEN } = process.env;
 
 	const sendRequest = async (
 		url = "https://api.github.com/repos/facebook/react/forks"
 	) => {
 		const headers = {
 			headers: {
-				Authorization: `token ${process.env.TOKEN}`,
+				Authorization: `token ${TOKEN}`,
 			},
 		};
 		try {
