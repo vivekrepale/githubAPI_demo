@@ -35,7 +35,7 @@ const Layout = () => {
 		const url = `https://api.github.com/user/following`;
 		const headers = {
 			headers: {
-				Authorization: "Token 5ede6a5bde154d02ae6514db2e8eb2c399aed675",
+				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
 			},
 		};
 		try {
@@ -89,3 +89,4 @@ export default Layout;
 
 // 411175e2714dccffd1ce3f9919662ef75afdea7e
 //5ede6a5bde154d02ae6514db2e8eb2c399aed675
+//ccd37db2a86cf10eb945050a086b79b9371a0683

@@ -3,7 +3,8 @@ import React from "react";
 const Footer = ({ url, buttonText, unique, sendRequest, setDisplayCard }) => {
 	return (
 		<footer className="footer" key={unique}>
-			<button
+			<h4
+				className="card-wrapper__follow__button card-wrapper__follow__button--white"
 				onClick={() => {
 					sendRequest(url);
 					window.scrollTo({
@@ -12,8 +13,8 @@ const Footer = ({ url, buttonText, unique, sendRequest, setDisplayCard }) => {
 					});
 				}}
 			>
-				{buttonText}
-			</button>
+				{buttonText.slice(5).slice(1, -1)}
+			</h4>
 		</footer>
 	);
 };

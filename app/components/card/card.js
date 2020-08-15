@@ -26,7 +26,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: "Token 5ede6a5bde154d02ae6514db2e8eb2c399aed675",
+				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
 			},
 		};
 		try {
@@ -48,7 +48,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: "Token 5ede6a5bde154d02ae6514db2e8eb2c399aed675",
+				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
 			},
 		};
 		try {
@@ -78,9 +78,9 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 					src={avatar}
 					alt="avatar"
 				/>
-				<h3 className="card-wrapper__head__username">{username}</h3>
+				<h4 className="card-wrapper__head__username">{username}</h4>
 			</div>
-			<h4 className="card-wrapper__id">Fork id: {id}</h4>
+			<h5 className="card-wrapper__id">Fork id: {id}</h5>
 			<div className="card-wrapper__follow">
 				{follow ? (
 					<h4 className="card-wrapper__follow__text">Following</h4>

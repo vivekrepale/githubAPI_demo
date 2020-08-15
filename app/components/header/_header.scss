@@ -1,9 +1,17 @@
 .header {
-	background-color: blue;
-	color: lightblue;
-	position: fixed;
+	background-color: black;
+	color: white;
 	width: 100%;
+	position: fixed;
 	top: 0;
 	z-index: 2;
-	height: 10vh;
+	height: 12vh;
+
+	display: grid;
+	align-items: center;
+
+	&__title {
+		padding: 1rem;
+		//text-transform: uppercase;
+	}
 }

@@ -2,25 +2,27 @@
 	display: grid;
 	//justify-items: center;
 	align-items: center;
-	grid-gap: 0.7rem;
+	grid-gap: 1rem;
 
 	background-image: linear-gradient(
-			to bottom,
-			rgba(#00ffff, 0.8),
-			rgba(black, 0.6)
+			to bottom right,
+			//rgba(black, 1),
+				rgba(#0394fc, 0.5),
+			rgba(black, 1)
 		),
-		url(./assets/images/card-bg.jpg);
+		url(./assets/images/bg6.jpg);
 	background-size: cover;
-	color: rgba(white, 1);
+	background-position: center;
+	color: white;
 	padding: 0 1rem;
 	padding-bottom: 0.7rem;
-	box-shadow: 0px 10px 6px -5px rgba(black, 0.6),
-		0px 8px 6px -5px rgba(black, 0.6), 0px 6px 6px -5px rgba(black, 0.6);
+	box-shadow: 0px 10px 6px -5px rgba(black, 0.4),
+		0px 8px 6px -5px rgba(black, 0.3), 0px 6px 6px -5px rgba(black, 0.2);
 	overflow-y: hidden;
 
 	&__head {
 		display: grid;
-		grid-template-columns: repeat(2, min-content);
+		grid-template-columns: repeat(2, minmax(min-content, max-content));
 		//grid-auto-flow: column;
 		//justify-self: start;
 		grid-gap: 0.5rem;
@@ -35,11 +37,11 @@
 
 		&__username {
 			align-self: end;
-			overflow-wrap: break-word;
-			word-break: keep-all;
-			hyphens: auto;
-			font-family: "Times New Roman", Times, serif;
-			color: white;
+			justify-self: end;
+			// overflow-wrap: break-word;
+			// word-break: keep-all;
+			// hyphens: auto;
+			//font-family: "Times New Roman", Times, serif;
 		}
 	}
 
@@ -47,13 +49,24 @@
 		justify-self: end;
 
 		&__button {
-			border: 1px solid rgba(white, 0.8);
+			//border: 1px solid rgba(white, 0.8);
 			cursor: pointer;
 			padding: 0.1rem 0.5rem;
-			//background-color: black;
+			background-color: rgba(#0394fc, 0.7);
+			transition: all 0.3s;
+			box-shadow: 0px 10px 8px -8px rgba(#0394fc, 0.5),
+				0px 10px 10px -10px rgba(#0394fc, 0.6);
 
-			&:hover {
-				transform: translateY(0.1rem) scaleY(0.99);
+			&--white {
+				background-color: rgba(white, 1);
+				padding: 0.1rem 0.5rem;
+			}
+
+			&:hover,
+			&:active {
+				transform: translateY(-0.15rem);
+				box-shadow: 0px 10px 8px -8px rgba(#0394fc, 0.8),
+					0px 10px 10px -10px rgba(#0394fc, 1);
 			}
 		}
 	}

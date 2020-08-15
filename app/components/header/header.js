@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
 	return (
 		<header className="header">
-			<h1>Github Demo App</h1>
+			<h2 className="header__title">Github Demo App</h2>
 		</header>
 	);
 };

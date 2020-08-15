@@ -4,7 +4,10 @@
 	bottom: 0;
 	background-color: black;
 	height: 6vh;
+
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: center;
+	align-items: center;
+	grid-gap: 0.7rem;
 }
