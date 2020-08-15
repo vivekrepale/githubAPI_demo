@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { Waypoint } from "react-waypoint";
+import { useSpring, useTransition, a, config } from "react-spring";
 
 const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 	const [follow, setFollow] = useState(false);
+	const [displayCard, setDisplayCard] = useState(false);
+
+	const animation = useSpring({
+		opacity: displayCard ? 1 : 0,
+		transform: displayCard ? "scale(1)" : "scale(0.5)",
+		config: config.slow,
+	});
+
+	const animation2 = useTransition(displayCard, null, {
+		// opacity: displayCard ? 1 : 0,
+		// transform: displayCard ? "translate3d(0,0,0)" : "translate3d(0,50%,0)",
+		from: { opacity: 0 },
+		enter: { opacity: 1 },
+		leave: { opacity: 0 },
+		config: config.slow,
+	});
 
 	const followAUser = async (username) => {
 		const url = `https://api.github.com/user/following/${username}`;
@@ -47,31 +65,37 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 	}, [username]);
 
 	return (
-		<div className="card-wrapper" key={unique}>
+		<a.div style={animation} className="card-wrapper" key={unique}>
+			<Waypoint
+				onEnter={() => setDisplayCard(true)}
+				onLeave={() => setDisplayCard(false)}
+				bottomOffset="10%"
+			/>
 			<div className="card-wrapper__head">
 				{" "}
 				<img
-					className="card-wrapper__avatar"
+					className="card-wrapper__head__avatar"
 					src={avatar}
 					alt="avatar"
 				/>
-				<h3 className="card-wrapper__username">{username}</h3>
+				<h3 className="card-wrapper__head__username">{username}</h3>
 			</div>
 			<h4 className="card-wrapper__id">Fork id: {id}</h4>
-
-			{follow ? (
-				<h3>Following</h3>
-			) : (
-				<button
-					className="card-wrapper__btn"
-					onClick={(e) => {
-						followAUser(username);
-					}}
-				>
-					Follow
-				</button>
-			)}
-		</div>
+			<div className="card-wrapper__follow">
+				{follow ? (
+					<h4 className="card-wrapper__follow__text">Following</h4>
+				) : (
+					<h4
+						className="card-wrapper__follow__button"
+						onClick={(e) => {
+							followAUser(username);
+						}}
+					>
+						Follow
+					</h4>
+				)}
+			</div>
+		</a.div>
 	);
 };
 

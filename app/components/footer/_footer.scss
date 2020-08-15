@@ -1,2 +1,10 @@
-.footer {
+.footer-wrapper {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: black;
+	height: 6vh;
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: center;
 }

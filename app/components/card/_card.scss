@@ -1,24 +1,60 @@
 .card-wrapper {
 	display: grid;
-	justify-items: center;
+	//justify-items: center;
 	align-items: center;
-	background-color: yellow;
-	//overflow: hidden;
+	grid-gap: 0.7rem;
+
+	background-image: linear-gradient(
+			to bottom,
+			rgba(#00ffff, 0.8),
+			rgba(black, 0.6)
+		),
+		url(./assets/images/card-bg.jpg);
+	background-size: cover;
+	color: rgba(white, 1);
+	padding: 0 1rem;
+	padding-bottom: 0.7rem;
+	box-shadow: 0px 10px 6px -5px rgba(black, 0.6),
+		0px 8px 6px -5px rgba(black, 0.6), 0px 6px 6px -5px rgba(black, 0.6);
+	overflow-y: hidden;
 
 	&__head {
 		display: grid;
 		grid-template-columns: repeat(2, min-content);
 		//grid-auto-flow: column;
-		justify-self: start;
+		//justify-self: start;
 		grid-gap: 0.5rem;
 
-		padding: 0.2rem 1rem;
-		text-wrap: break-word;
+		&__avatar {
+			height: 4rem;
+			width: 4rem;
+			border-radius: 5%;
+			box-shadow: 0px 10px 6px -5px rgba(black, 0.6),
+				0px 8px 6px -5px rgba(black, 0.6);
+		}
+
+		&__username {
+			align-self: end;
+			overflow-wrap: break-word;
+			word-break: keep-all;
+			hyphens: auto;
+			font-family: "Times New Roman", Times, serif;
+			color: white;
+		}
 	}
 
-	&__avatar {
-		height: 4rem;
-		width: 4rem;
-		border-radius: 50%;
+	&__follow {
+		justify-self: end;
+
+		&__button {
+			border: 1px solid rgba(white, 0.8);
+			cursor: pointer;
+			padding: 0.1rem 0.5rem;
+			//background-color: black;
+
+			&:hover {
+				transform: translateY(0.1rem) scaleY(0.99);
+			}
+		}
 	}
 }

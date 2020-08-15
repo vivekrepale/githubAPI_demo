@@ -51,25 +51,6 @@ const Layout = () => {
 	return (
 		<div className="layout-wrapper">
 			<Header />
-			<button
-				onClick={() => getUsersIFollow()}
-				className="layout-wrapper__btn"
-			>
-				Get all users I follow
-			</button>
-			<div className="layout-wrapper__data layout-wrapper__data--following">
-				{following.map((d, key) => {
-					return (
-						<Following
-							username={d.login}
-							id={d.id}
-							avatar={d.avatar_url}
-							unique={key}
-						/>
-					);
-				})}
-			</div>
-
 			<div className="layout-wrapper__data">
 				<h3>Users who forked Reacts repo from github:</h3>
 				{data.map((d, key) => {
@@ -84,21 +65,22 @@ const Layout = () => {
 					);
 				})}
 			</div>
-
-			{pagination_links
-				? urlArray.map((u, key) => {
-						const url = u.split(";")[0].trim().slice(1, -1);
-						const buttonText = u.split(";")[1];
-						return (
-							<Footer
-								url={url}
-								buttonText={buttonText}
-								unique={key}
-								sendRequest={sendRequest}
-							/>
-						);
-				  })
-				: ""}
+			<div className="footer-wrapper">
+				{pagination_links
+					? urlArray.map((u, key) => {
+							const url = u.split(";")[0].trim().slice(1, -1);
+							const buttonText = u.split(";")[1];
+							return (
+								<Footer
+									url={url}
+									buttonText={buttonText}
+									unique={key}
+									sendRequest={sendRequest}
+								/>
+							);
+					  })
+					: ""}
+			</div>
 		</div>
 	);
 };

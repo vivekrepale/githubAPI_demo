@@ -1,5 +1,17 @@
-body {
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
-	//background-color: rgba(black, 0.3);
+	box-sizing: inherit;
+}
+
+body {
+	box-sizing: border-box;
+}
+
+html {
+	//font-size: 62.5%;
+	//padding: 0 0.3rem;
+	letter-spacing: -0.5px;
 }
