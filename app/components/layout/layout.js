@@ -8,6 +8,7 @@ import Following from "../following/following.js";
 
 const Layout = () => {
 	//state to store the data
+	console.log("token", process.env.TOKEN);
 	const [data, setData] = useState([]);
 	const [pagination_links, set_pagination_links] = useState("");
 	const [following, setFollowing] = useState([]);
@@ -15,8 +16,13 @@ const Layout = () => {
 	const sendRequest = async (
 		url = "https://api.github.com/repos/facebook/react/forks"
 	) => {
+		const headers = {
+			headers: {
+				Authorization: `Token ${process.env.TOKEN}`,
+			},
+		};
 		try {
-			const res = await Axios.get(url);
+			const res = await Axios.get(url, headers);
 			setData(res.data);
 			//console.log(res.data);
 			set_pagination_links(res.headers.link);
@@ -35,7 +41,7 @@ const Layout = () => {
 		const url = `https://api.github.com/user/following`;
 		const headers = {
 			headers: {
-				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
+				Authorization: `Token ${process.env.TOKEN}`,
 			},
 		};
 		try {

@@ -26,7 +26,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
+				Authorization: `Token ${process.env.TOKEN}`,
 			},
 		};
 		try {
@@ -48,7 +48,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: "Token ccd37db2a86cf10eb945050a086b79b9371a0683",
+				Authorization: `Token ${process.env.TOKEN}`,
 			},
 		};
 		try {
