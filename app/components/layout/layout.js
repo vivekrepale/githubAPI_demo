@@ -13,7 +13,8 @@ const Layout = () => {
 	const [pagination_links, set_pagination_links] = useState("");
 	const [following, setFollowing] = useState([]);
 
-	const { TOKEN } = process.env;
+	const TOKEN = process.env.TOKEN;
+	console.log("Token", TOKEN);
 
 	const sendRequest = async (
 		url = "https://api.github.com/repos/facebook/react/forks"

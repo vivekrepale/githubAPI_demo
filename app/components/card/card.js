@@ -7,7 +7,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 	const [follow, setFollow] = useState(false);
 	const [displayCard, setDisplayCard] = useState(false);
 
-	const { TOKEN } = process.env;
+	const TOKEN = process.env.TOKEN;
 
 	const animation = useSpring({
 		opacity: displayCard ? 1 : 0,
