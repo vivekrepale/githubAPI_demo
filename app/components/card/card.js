@@ -10,23 +10,14 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 	const animation = useSpring({
 		opacity: displayCard ? 1 : 0,
 		transform: displayCard ? "scale(1)" : "scale(0.5)",
-		config: config.slow,
-	});
-
-	const animation2 = useTransition(displayCard, null, {
-		// opacity: displayCard ? 1 : 0,
-		// transform: displayCard ? "translate3d(0,0,0)" : "translate3d(0,50%,0)",
-		from: { opacity: 0 },
-		enter: { opacity: 1 },
-		leave: { opacity: 0 },
-		config: config.slow,
+		config: config.stiff,
 	});
 
 	const followAUser = async (username) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: `Token ${process.env.TOKEN}`,
+				Authorization: `token ${process.env.TOKEN}`,
 			},
 		};
 		try {
@@ -34,10 +25,6 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 			console.log(res);
 			if (res.status == 204) {
 				checkIfIFollowAUser(username);
-				getUsersIFollow();
-				setInterval(() => {
-					getUsersIFollow();
-				}, 10000);
 			}
 		} catch (e) {
 			console.log(e);
@@ -48,7 +35,7 @@ const Card = ({ username, id, avatar, unique, getUsersIFollow }) => {
 		const url = `https://api.github.com/user/following/${username}`;
 		const headers = {
 			headers: {
-				Authorization: `Token ${process.env.TOKEN}`,
+				Authorization: `token ${process.env.TOKEN}`,
 			},
 		};
 		try {
